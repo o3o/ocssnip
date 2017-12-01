@@ -8,8 +8,6 @@ ocssnip is a collection of [UltiSnips](https://github.com/SirVer/ultisnips) snip
 * Copy the `cs.snippets` file to UltiSnips user snippets directory. On Linux this
   should be `~/.vim/UltiSnips`.
 
-**TO DO**
-
 
 ## References
 ### Language
@@ -23,9 +21,9 @@ ocssnip is a collection of [UltiSnips](https://github.com/SirVer/ultisnips) snip
 | `pubv` | public void                |
 | `ret`  | return                     |
 | `rett` | return /*value to return*/ |
-| `ro` | readonly |
+| `ro`   | readonly                   |
 | `vd`   | void                       |
-| `wr` | Console.WriteLine |
+| `wr`   | Console.WriteLine          |
 
 ### Strings
 |         |                 |
@@ -36,15 +34,15 @@ ocssnip is a collection of [UltiSnips](https://github.com/SirVer/ultisnips) snip
 | `ts`    | ToString()      |
 
 ### Branches
-|        |                                     |
-| ---    | -----                               |
-| `case` | case /*value*/:  break              |
-| `el`   | else {                              |
-| `elif` | else if (/*condition*/)             |
-| `if`   | if (/*condition*/)                  |
-| `ife`  | if (/*condition*/) else             |
-| `ifnn` | if (/*condition*/ != null)         |
-| `sw`   | switch (/*var*/) .. case            |
+|        |                            |
+| ---    | -----                      |
+| `case` | case /*value*/:  break     |
+| `el`   | else {                     |
+| `elif` | else if (/*condition*/)    |
+| `if`   | if (/*condition*/)         |
+| `ife`  | if (/*condition*/) else    |
+| `ifnn` | if (/*condition*/ != null) |
+| `sw`   | switch (/*var*/) .. case   |
 
 ### Loops
 |           |                                                 |
@@ -64,16 +62,15 @@ ocssnip is a collection of [UltiSnips](https://github.com/SirVer/ultisnips) snip
 | `struct` | struct    |
 
 ### Functions
-|           |                                                        |
-| ---       | -----                                                  |
-| `fun`     | /*ret*/ /*function name*/(/*args*/) @safe pure nothrow |
-| `func`    | void /*function name*/(/*args*/) @safe pure nothrow    |
-| `get`     | *getter property*                                      |
-| `getset`  | *getter setter property*                               |
-| `getsetf` | *getter setter property full*                          |
-| `main`    | void main(string[] args)                               |
-| `maini`   | int main(string[] args)                                |
-
+|           |                                     |
+| ---       | -----                               |
+| `fun`     | /*ret*/ /*function name*/(/*args*/) |
+| `func`    | void /*function name*/(/*args*/)    |
+| `get`     | *getter property*                   |
+| `getset`  | *getter setter property*            |
+| `getsetf` | *getter setter property full*       |
+| `main`    | void main(string[] args)            |
+| `maini`   | int main(string[] args)             |
 
 
 ### Using
@@ -86,11 +83,11 @@ ocssnip is a collection of [UltiSnips](https://github.com/SirVer/ultisnips) snip
 | `ununit`   | NUnit.Framework            |
 
 ### Event
-|            |                            |
-| ---        | -----                      |
-| `event` | Full declaraton |
-| `evente` | EventArgs.Empty  |
-| `eventon` | *On* Function  |
+|           |                 |
+| ---       | -----           |
+| `event`   | Full declaraton |
+| `evente`  | EventArgs.Empty |
+| `eventon` | *On* Function   |
 
 ### Exception handling
 |         |                         |
@@ -102,9 +99,9 @@ ocssnip is a collection of [UltiSnips](https://github.com/SirVer/ultisnips) snip
 
 
 ### Comments
-| `fix`     | // FIX:                   |
-| `todo`    | // TODO:                  |
-| `sdc`     | Short sdoc  block         |
+| `fix`  | // FIX:         |
+| `todo` | // TODO:        |
+| `sdc`  | Short doc block |
 
 ### log4net
 |         |             |
@@ -145,9 +142,9 @@ ocssnip is a collection of [UltiSnips](https://github.com/SirVer/ultisnips) snip
 
 
 ### Ploeh.Autofixture
-|            |                          |
-| ---        | -----                    |
-| `autonew | new Fixture |
+|              |                |
+| ---          | -----          |
+| `autonew     | new Fixture    |
 | `autocreate` | Create Fixture |
 
 ### Nsubstitue
@@ -190,5 +187,3 @@ ocssnip is a collection of [UltiSnips](https://github.com/SirVer/ultisnips) snip
 | `sf`   | shouldBeFalse             |
 | `sn`   | shouldBeNull              |
 | `snn`  | shouldNotBeNull           |
-
-

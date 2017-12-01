@@ -3,7 +3,7 @@ priority -50
 # Language
 # ------------------
 snippet len "length (len)" i
-length
+Length
 endsnippet
 
 snippet nimp "NotImplementedException" b
@@ -56,7 +56,7 @@ endsnippet
 
 
 # ------------------
-# string  
+# String
 # ------------------
 
 snippet strne "IsNullOrEmpty" i
@@ -74,7 +74,6 @@ endsnippet
 snippet ts "ToString" i
 ToString()
 endsnippet
-
 
 # ------------------
 #  branching  
@@ -118,7 +117,7 @@ if ($1 != null) {
 }
 endsnippet
 
-snippet switch "switch statement" b
+snippet sw "switch statement" b
 switch (${1:statement}) {
 	case ${2:value}:
 		break;
@@ -138,7 +137,7 @@ do {
 endsnippet
 
 snippet for "for (for)" b
-for (${4:size_t} ${2:i} = 0; $2 < ${1:count}; ${3:++$2}) {
+for (${4:int} ${2:i} = 0; $2 < ${1:count}; ${3:++$2}) {
 	${VISUAL}${0:/*code*/}
 }
 endsnippet
@@ -172,7 +171,7 @@ endsnippet
 
 snippet enum "enumeration" b
 enum ${1:MyEnum} {
-	${2:Item}
+	${2:Item},
 };
 endsnippet
 
@@ -226,7 +225,7 @@ public static void Main(string[] args) {
 }
 endsnippet
 
-snippet imain "static int main" b
+snippet maini "static int main" b
 public static int Main(string[] args) {
 	${VISUAL}${0: /*code*/}
 }
@@ -239,7 +238,7 @@ snippet uscg "using Collections.Generic" b
 using SCG = System.Collections.Generic;
 endsnippet
 
-snippet unsub "using NSubstitute" b
+snippet usub "using NSubstitute" b
 using NSubstitute;
 endsnippet
 
@@ -257,7 +256,7 @@ endsnippet
 
 
 # ------------------
-#  Events 
+#  Events
 # ------------------
 snippet event
 public event System.EventHandler ${1:name};
@@ -375,7 +374,7 @@ endsnippet
 
 
 # ------------------
-#   NUnit    
+# NUnit
 # ------------------
 snippet asempty "Is empty" b
 Assert.That(${1:string}, Is.Empty);
@@ -417,12 +416,11 @@ snippet ast "Is true" b
 Assert.That(${1}, Is.True);
 endsnippet
 
-
 snippet asth "Assert throw" b
 Assert.Throws<${1:exception}>(() => ${2:method});
 endsnippet
 
-snippet asthat "Assert that" b
+snippet aseq "Assert that" b
 Assert.That(${1:actual}, Is.EqualTo(${2:expected}));
 endsnippet
 
@@ -462,7 +460,7 @@ var ${1:var} = fixture.Create<${2:interface}>();
 endsnippet
 
 # ------------------
-# Nsubstitue 
+# Nsubstitue
 # ------------------
 snippet ssub "Substitute.For" b
 var ${1:var} = Substitute.For<${2:interface}>();
@@ -489,11 +487,11 @@ ReturnsForAnyArgs(${1});
 endsnippet
 
 snippet srec "Received" i
-Received()
+Received().$1
 endsnippet
 
 snippet snrec "DidNotReceived" i
-DidNotReceive()
+DidNotReceive().$1
 endsnippet
 
 # ------------------
@@ -502,7 +500,6 @@ endsnippet
 snippet with "With" w
 "${1:/*format string*/}".With(${0:/*values*/})
 endsnippet
-
 
 
 # ------------------
@@ -548,7 +545,6 @@ endsnippet
 snippet seq "shouldEqual (seq)" w
 ShouldEqual(${1:/*to*/});
 endsnippet
-
 
 snippet sneq "shouldNotEqual (sneq)" w
 ShouldNotEqual(${1:/*to*/});
