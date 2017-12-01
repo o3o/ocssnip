@@ -2,17 +2,8 @@ priority -50
 # ------------------
 # Language
 # ------------------
-
-snippet vd "void" i
-void 
-endsnippet
-
 snippet len "length (len)" i
 length
-endsnippet
-
-snippet with "With" w
-"${1:/*format string*/}".With(${0:/*values*/})
 endsnippet
 
 snippet nimp "NotImplementedException" b
@@ -23,6 +14,21 @@ snippet obsolete "Obsolete" b
 [System.Obsolete("Please use ${1} instead.")]
 endsnippet
 
+snippet pr "private readonly" b
+private readonly 
+endsnippet
+
+snippet priv "private" i
+private 
+endsnippet
+
+snippet pub "public" b
+public 
+endsnippet
+
+snippet pubv "public void" b
+public void 
+endsnippet
 
 snippet ret "return" w
 return 
@@ -36,48 +42,130 @@ snippet ro "readonly" w
 readonly 
 endsnippet
 
-snippet pr "private readonly" b
-private readonly 
+snippet vd "void" i
+void 
 endsnippet
 
-snippet pub "public" b
-public 
-endsnippet
-
-snippet pubv "public void" b
-public void 
+snippet wr "Console.WriteLine" b
+System.Console.WriteLine("$1");
 endsnippet
 
 snippet sys "System" i
 System.
 endsnippet
 
-snippet priv "private" i
-private 
+
+# ------------------
+# string  
+# ------------------
+
+snippet strne "IsNullOrEmpty" i
+string.IsNullOrEmpty(${1:string})
 endsnippet
 
-snippet th "this" i
-this.
+snippet strf "Format" i
+string.Format(${1:string})
 endsnippet
 
-#########################
-#  classes and structs  #
-#########################
+snippet stre "string.Empty" w
+string.Empty
+endsnippet
 
+snippet ts "ToString" i
+ToString()
+endsnippet
+
+
+# ------------------
+#  branching  
+# ------------------
+snippet case "case" b
+case ${1:value}:
+	$2
+	break;
+endsnippet
+
+snippet el "else (el)" w
+else {
+	${VISUAL}${1:/*code*/}
+}
+endsnippet
+
+snippet elif "else if" w
+else if ($1) {
+	$0
+}
+endsnippet
+
+snippet if "if ()" b
+if (${1:/*condition*/}) {
+	${VISUAL}${2:/*code*/}
+}
+${3}
+endsnippet
+
+snippet ife "if else statement" b
+if ($1) {
+	${VISUAL}$2
+} else {
+	$3
+}
+endsnippet
+
+snippet ifnn "if not null" b
+if ($1 != null) {
+	${VISUAL}$0
+}
+endsnippet
+
+snippet switch "switch statement" b
+switch (${1:statement}) {
+	case ${2:value}:
+		break;
+
+	default:
+		$0break;
+}
+endsnippet
+
+# ------------------
+#  loops  
+# ------------------
+snippet do "do loop" b
+do {
+	${VISUAL}$0
+} while (${1:true});
+endsnippet
+
+snippet for "for (for)" b
+for (${4:size_t} ${2:i} = 0; $2 < ${1:count}; ${3:++$2}) {
+	${VISUAL}${0:/*code*/}
+}
+endsnippet
+
+snippet fore "foreach loop" b
+foreach (${3:var} ${2:item} in ${1:items}) {
+	${VISUAL}$0
+}
+endsnippet
+
+snippet fori "for (int i...) (fori)" b
+for (int i = 0; i < ${1:count}; ++i) {
+	${VISUAL}${0:/*code*/}
+}
+endsnippet
+
+snippet wh "while loop" b
+while (${1:true}) {
+	${VISUAL}$0
+}
+endsnippet
+
+# ------------------
+# Type definitions
+# ------------------
 snippet class "class" w
 public class ${1:MyClass} {
-	$0
-}
-endsnippet
-
-snippet struct "struct" w
-public struct ${1:MyStruct} {
-	$0
-}
-endsnippet
-
-snippet interface "interface" w
-public interface I${1:Interface} {
 	$0
 }
 endsnippet
@@ -88,31 +176,42 @@ enum ${1:MyEnum} {
 };
 endsnippet
 
-
-############
-#  Main()  #
-############
-snippet imain "static int main" b
-public static int Main(string[] args) {
+snippet interface "interface" w
+public interface I${1:Interface} {
 	$0
 }
 endsnippet
 
-snippet main "static void main" b
-public static void Main(string[] args) {
+snippet struct "struct" w
+public struct ${1:MyStruct} {
 	$0
 }
 endsnippet
 
+# ------------------
+# Funtion
+# ------------------
+snippet fun "function definition (fun)" b
+${1:void} ${2:/*function name*/}(${3:/*args*/}) {
+	${VISUAL}${4:/*code*/}
+}
+endsnippet
 
-################
-#  properties  #
-################
+snippet func "void function definition (void)" b
+void ${1:/*function name*/}(${2:/*args*/}) {
+	${VISUAL}${3:/*code*/}
+}
+endsnippet
+
+snippet get "Property with a private setter" b
+public ${1:int} ${2:MyProperty} { get; private set; }
+endsnippet
+
 snippet getset "Simple property declaration" b
 public ${1:int} ${2:MyProperty} { get; set; }
 endsnippet
 
-snippet getsetfull "Full property declaration" b
+snippet getsetf "Full property declaration" b
 private ${1:int} ${2:_myProperty};
 
 public $1 ${3:MyProperty} {
@@ -121,13 +220,294 @@ public $1 ${3:MyProperty} {
 }
 endsnippet
 
-snippet get "Property with a private setter" b
-public ${1:int} ${2:MyProperty} { get; private set; }
+snippet main "static void main" b
+public static void Main(string[] args) {
+	${VISUAL}${0: /*code*/}
+}
 endsnippet
 
-#############
-# Contracts #
-#############
+snippet imain "static int main" b
+public static int Main(string[] args) {
+	${VISUAL}${0: /*code*/}
+}
+endsnippet
+
+# ------------------
+# Usings 
+# ------------------
+snippet uscg "using Collections.Generic" b
+using SCG = System.Collections.Generic;
+endsnippet
+
+snippet unsub "using NSubstitute" b
+using NSubstitute;
+endsnippet
+
+snippet uautofix "using Ploeh" b
+using Ploeh.AutoFixture;
+endsnippet
+
+snippet ulinq "using Linq" b
+using System.Linq;
+endsnippet
+
+snippet ununit "using NUnit Framework" b
+using NUnit.Framework;
+endsnippet
+
+
+# ------------------
+#  Events 
+# ------------------
+snippet event
+public event System.EventHandler ${1:name};
+endsnippet
+
+
+snippet evente "EventArgs.Empty" i
+System.EventArgs.Empty
+endsnippet
+
+snippet eventon
+protected virtual void On$1(System.EventArgs e) {
+	var handler = $1;
+	if (handler != null) {
+		handler(this, e);
+	}
+}
+endsnippet
+
+# ------------------
+#  Exception handling
+# ------------------
+snippet try "try/catch (try)" b
+try {
+	${VISUAL}${1:/*code to try*/}
+} catch (${2}Exception ex) {
+	${3:/*handle exception*/}
+}
+endsnippet
+
+snippet tryf "try/catch/finally (tryf)" b
+try {
+	${VISUAL}${1:/*code to try*/}
+} catch (${2}Exception e) {
+	${3:/*handle exception*/}
+} finally {
+	${4:/*cleanup*/}
+}
+endsnippet
+
+snippet catch "catch (catch)" w
+catch (${1}Exception e) {
+	${2:/*handle exception*/}
+}
+endsnippet
+
+snippet thr "throw (thr)" w
+throw new ${1}Exception("${2}");
+endsnippet
+
+# ------------------
+# Comments
+# ------------------
+snippet fix "fix"
+// O-FIXME: ${VISUAL}$0
+endsnippet
+
+snippet todo "TODO (todo)" b
+// TODO: ${1}
+endsnippet
+
+snippet sdoc "short doc block (sdoc)" b
+/**
+ * ${1:description}
+ */
+endsnippet
+
+# ------------------
+# log4net 
+# ------------------
+snippet log
+private static readonly log4net.ILog log =
+	log4net.LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
+endsnippet
+
+snippet logd
+if (log.IsDebugEnabled) log.Debug("${1:msg}");
+endsnippet
+
+snippet logdf 
+if (log.IsDebugEnabled) log.DebugFormat("${1:msg}");
+endsnippet
+
+snippet logi
+if (log.IsInfoEnabled) log.Info("${1:msg}");
+endsnippet
+
+snippet logif
+if (log.IsInfoEnabled) log.InfoFormat("${1:msg}");
+endsnippet
+
+snippet logw
+if (log.IsWarnEnabled) log.Warn("${1:msg}");
+endsnippet
+
+snippet logwf
+if (log.IsWarnEnabled) log.WarnFormat("${1:msg}");
+endsnippet
+
+snippet loge
+if (log.IsErrorEnabled) log.Error("${1:msg}");
+endsnippet
+
+snippet logef
+if (log.IsErrorEnabled) log.ErrorFormat("${1:msg}");
+endsnippet
+
+snippet logf
+if (log.IsFatalEnabled) log.Fatal("${1:msg}");
+endsnippet
+
+snippet logff
+if (log.IsFatalEnabled) log.FatalFormat("${1:msg}");
+endsnippet
+
+
+# ------------------
+#   NUnit    
+# ------------------
+snippet asempty "Is empty" b
+Assert.That(${1:string}, Is.Empty);
+endsnippet
+
+snippet asf "Is false" b
+Assert.That(${1}, Is.False);
+endsnippet
+
+snippet asgt "Is greater than" b
+Assert.That(${1}, Is.GreaterThan(${2}));
+endsnippet
+
+snippet asgte "Is greater than or equal" b
+Assert.That(${1}, Is.GreaterThanOrEqualTo(${2}));
+endsnippet
+
+snippet aslt "Is less than" b
+Assert.That(${1}, Is.LessThan(${2}));
+endsnippet
+
+snippet aslte "Is less than or equal" b
+Assert.That(${1}, Is.LessThanOrEqualTo(${2}));
+endsnippet
+
+snippet asnempty "Is not empty" b
+Assert.That(${1:string}, Is.Not.Empty);
+endsnippet
+
+snippet asnnull "Is not null" b
+Assert.That(${1:obj}, Is.Not.Null);
+endsnippet
+
+snippet asnull "Is null" b
+Assert.That(${1:obj}, Is.Null);
+endsnippet
+
+snippet ast "Is true" b
+Assert.That(${1}, Is.True);
+endsnippet
+
+
+snippet asth "Assert throw" b
+Assert.Throws<${1:exception}>(() => ${2:method});
+endsnippet
+
+snippet asthat "Assert that" b
+Assert.That(${1:actual}, Is.EqualTo(${2:expected}));
+endsnippet
+
+snippet exp "Explicit" b
+[Explicit]
+endsnippet
+
+snippet ignore "Ignore" b
+[Ignore("${1:why}")]
+endsnippet
+
+snippet setcul "Set culture" b
+[SetCulture("it-IT")]
+endsnippet
+
+snippet test "Test" b
+[Test]
+endsnippet
+
+snippet testcase "Test case" b
+[TestCase(${1:args})]
+endsnippet
+
+snippet testfix "Test fixture" b
+[TestFixture]
+endsnippet
+
+# ------------------
+# Ploeh.Autofixture 
+# ------------------
+snippet autonew "new Fixture" b
+var fixture = new Fixture();
+endsnippet
+
+snippet autocreate "Create Fixture" b
+var ${1:var} = fixture.Create<${2:interface}>();
+endsnippet
+
+# ------------------
+# Nsubstitue 
+# ------------------
+snippet ssub "Substitute.For" b
+var ${1:var} = Substitute.For<${2:interface}>();
+endsnippet
+
+snippet sevent "Raise.Event" b
+${1:event} += Raise.EventWith(null, System.EventArgs.Empty);
+endsnippet
+
+snippet sany "Arg.Any" i
+Arg.Any<${1:arg}>()
+endsnippet
+
+snippet sis "Arg.Is" i
+Arg.Is<${1:arg}>(v => ${2})
+endsnippet
+
+snippet sret "Returns" i
+Returns(${1});
+endsnippet
+
+snippet sreta "ReturnsForAnyArgs" i
+ReturnsForAnyArgs(${1});
+endsnippet
+
+snippet srec "Received" i
+Received()
+endsnippet
+
+snippet snrec "DidNotReceived" i
+DidNotReceive()
+endsnippet
+
+# ------------------
+# Extensions
+# ------------------
+snippet with "With" w
+"${1:/*format string*/}".With(${0:/*values*/})
+endsnippet
+
+
+
+# ------------------
+# Contracts
+# ------------------
 snippet req "Guard condition"
 Requires.IsNotNull(${1:var}, "$1");
 this.$1 = $1;
@@ -191,441 +571,3 @@ ShouldNotBeNull;
 endsnippet
 
 
-############
-#  events  #
-############
-snippet event
-public event System.EventHandler ${1:name};
-protected virtual void On$1(System.EventArgs e) {
-	var handler = $1;
-	if (handler != null) {
-		handler(this, e);
-	}
-}
-endsnippet
-
-snippet eventh "EventHandler" b
-event System.EventHandler ${1:name};
-endsnippet
-
-snippet evente "EventArgs.Empty" i
-System.EventArgs.Empty
-endsnippet
-
-
-###########
-# string  #
-###########
-# prefisso str
-snippet strf "Format" i
-string.Format(${1:string})
-endsnippet
-
-snippet strne "IsNullOrEmpty" i
-string.IsNullOrEmpty(${1:string})
-endsnippet
-
-snippet strnne "IsNotNullOrEmpty" i
-!string.IsNullOrEmpty(${1:string})
-endsnippet
-
-snippet ts "ToString" i
-ToString()
-endsnippet
-
-snippet stre "string.Empty" w
-string.Empty
-endsnippet
-
-
-###########
-# log4net #
-###########
-snippet log
-private static readonly log4net.ILog log =
-	log4net.LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
-endsnippet
-
-snippet logd
-if (log.IsDebugEnabled) log.Debug("${1:msg}");
-endsnippet
-
-snippet logdf 
-if (log.IsDebugEnabled) log.DebugFormat("${1:msg}");
-endsnippet
-
-snippet logi
-if (log.IsInfoEnabled) log.Info("${1:msg}");
-endsnippet
-
-snippet logif
-if (log.IsInfoEnabled) log.InfoFormat("${1:msg}");
-endsnippet
-
-snippet logw
-if (log.IsWarnEnabled) log.Warn("${1:msg}");
-endsnippet
-
-snippet logwf
-if (log.IsWarnEnabled) log.WarnFormat("${1:msg}");
-endsnippet
-
-snippet loge
-if (log.IsErrorEnabled) log.Error("${1:msg}");
-endsnippet
-
-snippet logef
-if (log.IsErrorEnabled) log.ErrorFormat("${1:msg}");
-endsnippet
-
-snippet logf
-if (log.IsFatalEnabled) log.Fatal("${1:msg}");
-endsnippet
-
-snippet logff
-if (log.IsFatalEnabled) log.FatalFormat("${1:msg}");
-endsnippet
-
-
-###########
-#  loops  #
-###########
-snippet for "for (for)" b
-for (${4:size_t} ${2:i} = 0; $2 < ${1:count}; ${3:++$2}) {
-	${VISUAL}${0:/*code*/}
-}
-endsnippet
-
-snippet fori "for (int i...) (fori)" b
-for (int i = 0; i < ${1:count}; ++i) {
-	${VISUAL}${0:/*code*/}
-}
-endsnippet
-
-snippet fore "foreach loop" b
-foreach (${3:var} ${2:item} in ${1:items}) {
-	${VISUAL}$0
-}
-endsnippet
-
-snippet wh "while loop" b
-while (${1:true}) {
-	${VISUAL}$0
-}
-endsnippet
-
-snippet do "do loop" b
-do {
-	${VISUAL}$0
-} while (${1:true});
-endsnippet
-
-
-###############
-#  branching  #
-###############
-snippet if "if ()" b
-if (${1:/*condition*/}) {
-	${VISUAL}${2:/*code*/}
-}
-${3}
-endsnippet
-snippet ife "if else statement" b
-if ($1) {
-	${VISUAL}$2
-} else {
-	$3
-}
-endsnippet
-
-snippet elif "else if" w
-else if ($1) {
-	$0
-}
-endsnippet
-
-snippet if!n "if not null" b
-if ($1 != null) {
-	${VISUAL}$0
-}
-endsnippet
-
-snippet ifne "if null or empty" b
-if (string.IsNullOrEmpty(${1:string})) {
-	${VISUAL}$0
-}
-endsnippet
-
-snippet ifnne "if not null or empty" b
-if (!string.IsNullOrEmpty(${1:string})) {
-	${VISUAL}$0
-}
-endsnippet
-
-snippet switch "switch statement" b
-switch (${1:statement}) {
-	case ${2:value}:
-		break;
-
-	default:
-		$0break;
-}
-endsnippet
-
-snippet case "case" b
-case ${1:value}:
-	$2
-	break;
-endsnippet
-
-
-##############
-#  wrappers  #
-##############
-snippet using "using statement" b
-using (${1:resource}) {
-	${VISUAL}$0
-}
-endsnippet
-
-snippet unchecked "unchecked block" b
-unchecked {
-	${VISUAL}$0
-}
-endsnippet
-
-snippet checked "checked block" b
-checked {
-	${VISUAL}$0
-}
-endsnippet
-
-snippet unsafe "unsafe" b
-unsafe {
-	${VISUAL}$0
-}
-endsnippet
-
-
-########################
-#  exception handling  #
-########################
-snippet try "try catch block" b
-try {
-	${VISUAL}$0
-} catch (${1:System.Exception} ${2:ex}) {
-	throw;
-}
-endsnippet
-
-snippet tryf "try finally block" b
-try {
-	${VISUAL}$0
-} finally {
-}
-endsnippet
-
-snippet throw "throw"
-throw new ${1}Exception("${2}");
-endsnippet
-
-
-##########
-#  LINQ  #
-##########
-
-snippet from "LINQ syntax" b
-var ${1:seq} =
-	from ${2:item1} in ${3:items1}
-	join ${4:item2} in ${5:items2} on $2.${6:prop1} equals $4.${7:prop2}
-	select ${8:$2.prop3}
-	where ${9:clause}
-endsnippet
-
-
-############################
-#  feedback and debugging  #
-############################
-snippet wr "Console.WriteLine" b
-System.Console.WriteLine("$1");
-endsnippet
-
-# as you first type comma-separated parameters on the right, {n} values appear in the format string
-snippet wrf "Console.WriteLine with parameters" b
-System.Console.WriteLine("${2:`!p
-snip.rv = ' '.join(['{' + str(i) + '}' for i in range(t[1].count(','))])
-`}"${1:, something});
-endsnippet
-
-snippet mbox "Message box" b
-MessageBox.Show("${1:message}");
-endsnippet
-
-##############
-#   NUnit    #
-##############
-snippet ass "Assert that" b
-Assert.That(${1:actual}, Is.EqualTo(${2:expected}));
-endsnippet
-
-snippet uth "Assert that" b
-Assert.That(${1:actual}, Is.EqualTo(${2:expected}));
-endsnippet
-
-snippet ufix "Test fixture" b
-[TestFixture]
-endsnippet
-
-snippet utest "Test" b
-[Test]
-endsnippet
-
-snippet utestcase "Test case" b
-[TestCase(${1:args})]
-endsnippet
-
-snippet ucul "Set culture" b
-[SetCulture("it-IT")]
-endsnippet
-
-snippet uex "Explicit" b
-[Explicit]
-endsnippet
-
-snippet uign "Ignore" b
-[Ignore("${1:why}")]
-endsnippet
-
-snippet uthrow "Assert throw" b
-Assert.Throws<${1:exception}>(() => ${2:method});
-endsnippet
-
-snippet uempty "Is empty" b
-Assert.That(${1:string}, Is.Empty);
-endsnippet
-
-snippet unempty "Is not empty" b
-Assert.That(${1:string}, Is.Not.Empty);
-endsnippet
-
-snippet unull "Is null" b
-Assert.That(${1:obj}, Is.Null);
-endsnippet
-
-snippet unnull "Is not null" b
-Assert.That(${1:obj}, Is.Not.Null);
-endsnippet
-
-snippet ugt "Is greater than" b
-Assert.That(${1}, Is.GreaterThan(${2}));
-endsnippet
-
-snippet ugte "Is greater than or equal" b
-Assert.That(${1}, Is.GreaterThanOrEqualTo(${2}));
-endsnippet
-
-snippet ult "Is less than" b
-Assert.That(${1}, Is.LessThan(${2}));
-endsnippet
-
-snippet ulte "Is less than or equal" b
-Assert.That(${1}, Is.LessThanOrEqualTo(${2}));
-endsnippet
-
-snippet ut "Is true" b
-Assert.That(${1}, Is.True);
-endsnippet
-
-snippet uf "Is false" b
-Assert.That(${1}, Is.False);
-endsnippet
-
-#####################
-# Ploeh.Autofixture #
-####################
-snippet afix "new Fixture" b
-var fixture = new Fixture();
-endsnippet
-
-snippet ac "Create Fixture" b
-var ${1:var} = fixture.Create<${2:interface}>();
-endsnippet
-
-##############
-# nsubstitue #
-##############
-snippet ssub "Substitute.For" b
-var ${1:var} = Substitute.For<${2:interface}>();
-endsnippet
-
-snippet sevent "Raise.Event" b
-${1:event} += Raise.EventWith(null, System.EventArgs.Empty);
-endsnippet
-
-snippet sany "Arg.Any" i
-Arg.Any<${1:arg}>()
-endsnippet
-
-snippet sis "Arg.Is" i
-Arg.Is<${1:arg}>(v => ${2})
-endsnippet
-
-snippet sret "Returns" i
-Returns(${1});
-endsnippet
-
-snippet sreta "ReturnsForAnyArgs" i
-ReturnsForAnyArgs(${1});
-endsnippet
-
-snippet srec "Received" i
-Received()
-endsnippet
-
-snippet snrec "DidNotReceived" i
-DidNotReceive()
-endsnippet
-
-
-##################
-#  full methods  #
-##################
-snippet equals "Equals method" b
-public override bool Equals(object obj) {
-	if (obj == null || GetType() != obj.GetType()) {
-		return false;
-	}
-	$0
-	return base.Equals(obj);
-}
-endsnippet
-
-##########
-# Usings #
-##########
-snippet uscg "using Collections.Generic" b
-using SCG = System.Collections.Generic;
-endsnippet
-
-snippet usub "using NSubstitute" b
-using NSubstitute;
-endsnippet
-
-snippet ua "using Ploeh" b
-using Ploeh.AutoFixture;
-endsnippet
-
-snippet ulinq "using Linq" b
-using System.Linq;
-endsnippet
-
-snippet uunit "using NUnit Framework" b
-using NUnit.Framework;
-endsnippet
-
-############
-# Comments #
-############
-snippet fix "fix"
-// O-FIXME: ${VISUAL}$0
-endsnippet

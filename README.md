@@ -13,123 +13,84 @@ ocssnip is a collection of [UltiSnips](https://github.com/SirVer/ultisnips) snip
 
 ## References
 ### Language
-|          |                               |
-| ---      | -----                         |
-| `const`  | const()                       |
-| `with` | With(/*values*/)            |
-| `len`    | length                        |
-| `new`    | new                           |
-| `over`   | override                      |
-| `pr`   | private readonly                      |
-| `priv`   | private                       |
-| `pub`    | public                        |
-| `pubv`    | public void                       |
-| `ret`    | return                        |
-| `rett`   | return /*value to return*/     |
-| `vd`     | void                          |
+|        |                            |
+| ---    | -----                      |
+| `len`  | length                     |
+| `nimp` | NotImplementedException    |
+| `pr`   | private readonly           |
+| `priv` | private                    |
+| `pub`  | public                     |
+| `pubv` | public void                |
+| `ret`  | return                     |
+| `rett` | return /*value to return*/ |
+| `ro` | readonly |
+| `vd`   | void                       |
+| `wr` | Console.WriteLine |
 
-### log4net log
-|         |               |
-| ---     | -----         |
-| `logd`  | logDebug      |
-| `logdi` | logDiagnostic |
-| `logi`  | logInfo       |
-| `logw`  | logWarn       |
-| `loge`  | logError      |
-
-### Import
-|         |                                              |
-| ---     | -----                                        |
-| `imp`   | import list                                  |
-| `impa`  | import std.array                             |
-| `impc`  | import std.conv;                             |
-| `impe`  | import std.signals                           |
-| `impex` | import std.exception                         |
-| `impf`  | import std.file                              |
-| `impi`  | import std.stdio                             |
-| `impo`  | import /*module*/                            |
-| `imps`  | import std.string                            |
-| `impu`  | import unit_threaded                         |
-| `impuv` | `version(unittest) { import unit_threaded }` |
-| `pimp`  | public import /*module*/                     |
-
-### NUnit
-|        |                           |
-| ---    | -----                     |
-| `seq`  | shouldEqual               |
-| `saeq` | shouldApproxEqual(/*to*/) |
-| `sinc` | shouldInclude(/*item*/)   |
-| `sneq` | shouldNotEqual(/*to*/)    |
-| `st`   | shouldBeTrue              |
-| `sf`   | shouldBeFalse             |
-| `sn`   | shouldBeNull              |
-| `sgt`  | shouldBeGreaterThan       |
-| `sst`  | shouldBeSmallerThan       |
-| `ssj`  | shouldBeSameJsonAs        |
-| `snn`  | shouldNotBeNull           |
-| `sth`  | shouldThrow!Exception     |
-| `snth` | shouldNotThrow!Exception  |
-| `ht`   | @HiddenTest(message)      |
-| `ut`   | @UnitTest                 |
-
+### Strings
+|         |                 |
+| ---     | -----           |
+| `stre`  | string.Empty    |
+| `strf`  | string.Format() |
+| `strne` | IsNullOrEmpty() |
+| `ts`    | ToString()      |
 
 ### Branches
 |        |                                     |
 | ---    | -----                               |
-| `if`   | if (/*condition*/)                  |
-| `ifnn` | if (/*condition*/ !is null)         |
-| `ife`  | if (/*condition*/) else             |
+| `case` | case /*value*/:  break              |
 | `el`   | else {                              |
 | `elif` | else if (/*condition*/)             |
-| `sif`  | static if ()                        |
+| `if`   | if (/*condition*/)                  |
+| `ife`  | if (/*condition*/) else             |
+| `ifnn` | if (/*condition*/ != null)         |
 | `sw`   | switch (/*var*/) .. case            |
-| `fsw`  | final switch (/*var*/)              |
-| `case` | case /*value*/:  break              |
-| `?:`   | /*condition*/ ? /*then*/ : /*else*/ |
 
 ### Loops
 |           |                                                 |
 | ---       | -----                                           |
 | `do`      | do while                                        |
-| `wh`      | while (/*condition*/)                           |
 | `for`     | for (size_t i = 0; i < count; ++i)              |
-| `fori`    | for (int i = 0; i < count; ++i)                 |
 | `fore`    | foreach (/*elem*/; /*range*/)                   |
-| `forei`   | foreach (i; 0 .. /*max*/)                       |
-| `forever` | for (;;)                                        |
-| `forif`   | foreach (/*elem*/; /*range*/) if(/*condition*/) |
+| `fori`    | for (int i = 0; i < count; ++i)                 |
+| `wh`      | while (/*condition*/)                           |
 
-### Contracts
-|        |                                                |
-| ---    | -----                                          |
-| `req`  | assert(var !is null) and assign                |
-| `reqn` | assert(var !is null)                           |
-| `in`   | in                                             |
-| `out`  | out                                            |
-| `body` | body                                           |
-| `inv`  | invariant()                                    |
-| `enf`  | enforce(/*condition*/)                         |
-| `enfe` | enforce(/*condition*/,new Exception(/*args*/)) |
-| `enfa` | enforce(/*condition*/)  ans assegnation        |
+### Type definitions
+|          |           |
+| ---      | -----     |
+| `class`  | class     |
+| `enum`   | enum      |
+| `inter`  | interface |
+| `struct` | struct    |
 
 ### Functions
 |           |                                                        |
 | ---       | -----                                                  |
 | `fun`     | /*ret*/ /*function name*/(/*args*/) @safe pure nothrow |
 | `func`    | void /*function name*/(/*args*/) @safe pure nothrow    |
-| `this`    | this(/*args*/)                                         |
 | `get`     | *getter property*                                      |
-| `set`     | *setter property*                                      |
 | `getset`  | *getter setter property*                               |
-| `getp`    | *getter property pure*                                 |
-| `setp`    | *setter property pure*                                 |
-| `getsetp` | *getter setter property pure*                          |
+| `getsetf` | *getter setter property full*                          |
 | `main`    | void main(string[] args)                               |
 | `maini`   | int main(string[] args)                                |
 
-### Signal
-|          |                                   |
-| ---      | -----                             |
+
+
+### Using
+|            |                            |
+| ---        | -----                      |
+| `uscg`     | system.Collections.Generic |
+| `unsub`    | NSubstitute                |
+| `uautofix` | Ploeh.AutoFixture          |
+| `ulinq`    | Linq                       |
+| `ununit`   | NUnit.Framework            |
+
+### Event
+|            |                            |
+| ---        | -----                      |
+| `event` | Full declaraton |
+| `evente` | EventArgs.Empty  |
+| `eventon` | *On* Function  |
 
 ### Exception handling
 |         |                         |
@@ -138,43 +99,96 @@ ocssnip is a collection of [UltiSnips](https://github.com/SirVer/ultisnips) snip
 | `tryf`  | try , catch and finally |
 | `catch` | catch (Exception e)     |
 | `thr`   | throw new Exception("") |
-| `exc` | Exception class declaration |
-
-### Type definitions
-|          |           |
-| ---      | -----     |
-| `struct` | struct    |
-| `union`  | union     |
-| `class`  | class     |
-| `inter`  | interface |
-| `enum`   | enum      |
 
 
-### Assert
-|       |                                        |
-| ---   | -----                                  |
-| `as`  | assert(false)                          |
-| `asm` | assert(/*condition*/, "error message") |
-| `sas` | static assert(false)                   |
-|
-
-### DDoc and comments
-|           |                           |
-| ---       | -----                     |
+### Comments
 | `fix`     | // FIX:                   |
 | `todo`    | // TODO:                  |
-| `sdc`     | Short sdoc block         |
-| `doc`     | Generic sdoc block       |
-| `fdoc`    | Function ddoc block       |
-| `fsdoc`   | Short function ddoc block |
-| `Pars`    | Params ddoc block         |
-| `Par`     | Params inline             |
-| `Ret`     | Returns                   |
-| `Thr`     | Throws                    |
-| `Example` | Examples                  |
+| `sdc`     | Short sdoc  block         |
 
-### License
-|         |               |
-| ---     | -----         |
-| `gpl`   | GPL License   |
-| `boost` | Boost License |
+### log4net
+|         |             |
+| ---     | -----       |
+| `log`   | declaration |
+| `logd`  | Debug       |
+| `logdf` | DebugFormat |
+| `logi`  | Info        |
+| `logif` | InfoFormat  |
+| `logw`  | Warn        |
+| `logwf` | WarnFormat  |
+| `loge`  | Error       |
+| `logef` | ErrorFormat |
+| `logf`  | Fatal       |
+| `logff` | FatalFormat |
+
+### NUnit
+|            |                          |
+| ---        | -----                    |
+| `asempty`  | Is empty                 |
+| `asf`      | Is false                 |
+| `asgt`     | Is greater than          |
+| `asgte`    | Is greater than or equal |
+| `aslt`     | Is less than             |
+| `aslte`    | Is less than or equal    |
+| `asnempty` | Is not empty             |
+| `asnnull`  | Is not null              |
+| `asnull`   | Is null                  |
+| `ast`      | Is true                  |
+| `asth`     | Assert throw             |
+| `asthat`   | Assert that              |
+| `exp`      | Explicit                 |
+| `ignore`   | Ignore                   |
+| `setcul`   | Set culture              |
+| `test`     | Test                     |
+| `testcase` | Test case                |
+| `testfix`  | Test fixture             |
+
+
+### Ploeh.Autofixture
+|            |                          |
+| ---        | -----                    |
+| `autonew | new Fixture |
+| `autocreate` | Create Fixture |
+
+### Nsubstitue
+|          |                   |
+| ---      | -----             |
+| `ssub`   | Substitute.For    |
+| `sevent` | Raise.Event       |
+| `sany`   | Arg.Any           |
+| `sis`    | Arg.Is            |
+| `sret`   | Returns           |
+| `sreta`  | ReturnsForAnyArgs |
+| `srec`   | Received          |
+| `snrec`  | DidNotReceived    |
+
+
+### Contracts
+|         |                            |
+| ---     | -----                      |
+| `req`   | Guard condition            |
+| `reqn`  | Requires not null          |
+| `reqne` | Requires not null or empty |
+| `reqt`  | Requires that              |
+| `ensn`  | Ensures not null           |
+| `ensne` | Ensures not null or empty  |
+| `enst`  | Ensures that               |
+| `ensnr` | Ensures not reached        |
+
+
+### Extension (unstandard)
+|         |                            |
+| ---     | -----                      |
+| `with`  | With(/*values*/)           |
+
+### Should
+|        |                           |
+| ---    | -----                     |
+| `seq`  | shouldEqual               |
+| `sneq` | shouldNotEqual(/*to*/)    |
+| `st`   | shouldBeTrue              |
+| `sf`   | shouldBeFalse             |
+| `sn`   | shouldBeNull              |
+| `snn`  | shouldNotBeNull           |
+
+
