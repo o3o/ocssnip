@@ -61,6 +61,15 @@
 #     options, like 'b'. See |UltiSnips-context-snippets| for more info.
 
 priority -50
+## Language
+
+snippet len "length (len)" i
+length
+endsnippet
+
+snippet with "With" w
+"${1:/*format string*/}".With(${0:/*values*/})
+endsnippet
 
 snippet nimp "NotImplementedException" b
 throw new System.NotImplementedException("Not implemented.");
@@ -78,7 +87,7 @@ snippet ret "return" w
 return 
 endsnippet
 
-snippet retv "return value" w
+snippet rett "return value" w
 return ${1};
 endsnippet
 
@@ -113,11 +122,6 @@ endsnippet
 #########################
 #  classes and structs  #
 #########################
-snippet namespace "namespace" b
-namespace ${1:MyNamespace} {
-	${VISUAL}$0
-}
-endsnippet
 
 snippet class "class" w
 public class ${1:MyClass} {
@@ -126,7 +130,7 @@ public class ${1:MyClass} {
 endsnippet
 
 snippet struct "struct" w
-struct ${1:MyStruct} {
+public struct ${1:MyStruct} {
 	$0
 }
 endsnippet
@@ -163,11 +167,11 @@ endsnippet
 ################
 #  properties  #
 ################
-snippet prop "Simple property declaration" b
+snippet getset "Simple property declaration" b
 public ${1:int} ${2:MyProperty} { get; set; }
 endsnippet
 
-snippet propfull "Full property declaration" b
+snippet getsetfull "Full property declaration" b
 private ${1:int} ${2:_myProperty};
 
 public $1 ${3:MyProperty} {
@@ -176,7 +180,7 @@ public $1 ${3:MyProperty} {
 }
 endsnippet
 
-snippet propg "Property with a private setter" b
+snippet get "Property with a private setter" b
 public ${1:int} ${2:MyProperty} { get; private set; }
 endsnippet
 
@@ -192,7 +196,7 @@ snippet reqn "Requires not null" b
 Requires.IsNotNull(${1:var}, "$1");
 endsnippet
 
-snippet reqnne "Requires not null or empty" b
+snippet reqne "Requires not null or empty" b
 Requires.IsNotNullOrEmpty(${1:var}, "$1");
 endsnippet
 
@@ -201,11 +205,11 @@ Requires.That(${1:cond}, "$1");
 
 endsnippet
 
-snippet ensnn "Ensures not null" b
+snippet ensn "Ensures not null" b
 Ensures.IsNotNull(${1:var}, "$1");
 endsnippet
 
-snippet ensnne "Ensures not null or empty" b
+snippet ensne "Ensures not null or empty" b
 Ensures.IsNotNullOrEmpty(${1:var}, "$1");
 endsnippet
 
@@ -217,20 +221,6 @@ snippet ensnr "Ensures not reached" b
 Ensures.NotReached();
 endsnippet
 
-############
-#  blocks  #
-############
-snippet #if "#if #endif" b
-#if ${1:DEBUG}
-${VISUAL}$0
-#endif
-endsnippet
-
-snippet #region "#region #endregion" b
-#region ${1:Region}
-${VISUAL}$0
-#endregion
-endsnippet
 
 ############
 #  events  #
@@ -331,25 +321,25 @@ endsnippet
 ###########
 #  loops  #
 ###########
-snippet for "for loop" b
-for (int ${1:i} = 0; $1 < ${2:10}; ++$1) {
-	${VISUAL}$0
+snippet for "for (for)" b
+for (${4:size_t} ${2:i} = 0; $2 < ${1:count}; ${3:++$2}) {
+	${VISUAL}${0:/*code*/}
 }
 endsnippet
 
-snippet forr "for loop (reverse)" b
-for (int ${1:i} = ${2:10}; $1 >= 0; --$1) {
-	${VISUAL}$0
+snippet fori "for (int i...) (fori)" b
+for (int i = 0; i < ${1:count}; ++i) {
+	${VISUAL}${0:/*code*/}
 }
 endsnippet
 
-snippet foreach "foreach loop" b
+snippet fore "foreach loop" b
 foreach (${3:var} ${2:item} in ${1:items}) {
 	${VISUAL}$0
 }
 endsnippet
 
-snippet while "while loop" b
+snippet wh "while loop" b
 while (${1:true}) {
 	${VISUAL}$0
 }
@@ -365,12 +355,12 @@ endsnippet
 ###############
 #  branching  #
 ###############
-snippet if "if statement" b
-if ($1) {
-	${VISUAL}$0
+snippet if "if ()" b
+if (${1:/*condition*/}) {
+	${VISUAL}${2:/*code*/}
 }
+${3}
 endsnippet
-
 snippet ife "if else statement" b
 if ($1) {
 	${VISUAL}$2
