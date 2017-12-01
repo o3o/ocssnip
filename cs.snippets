@@ -1,0 +1,672 @@
+#######################################################################
+#                      C# Snippets for UltiSnips                      #
+#######################################################################
+# Connvenzioni
+# Null n
+# Empty e
+# Not n
+#
+# So:
+# NotNull nn
+# NotNullOrEmpty nne
+#
+# b   Beginning of line - A snippet with this option is expanded only if the
+#     tab trigger is the first word on the line. In other words, if only
+#     whitespace precedes the tab trigger, expand. The default is to expand
+#     snippets at any position regardless of the preceding non-whitespace
+#     characters.
+#
+# i   In-word expansion - By default a snippet is expanded only if the tab
+#     trigger is the first word on the line or is preceded by one or more
+#     whitespace characters. A snippet with this option is expanded
+#     regardless of the preceding character. In other words, the snippet can
+#     be triggered in the middle of a word.
+#
+# w   Word boundary - With this option, the snippet is expanded if
+#     the tab trigger start matches a word boundary and the tab trigger end
+#     matches a word boundary. In other words the tab trigger must be
+#     preceded and followed by non-word characters. Word characters are
+#     defined by the 'iskeyword' setting. Use this option, for example, to
+#     permit expansion where the tab trigger follows punctuation without
+#     expanding suffixes of larger words.
+#
+# r   Regular expression - With this option, the tab trigger is expected to
+#     be a python regular expression. The snippet is expanded if the recently
+#     typed characters match the regular expression. Note: The regular
+#     expression MUST be quoted (or surrounded with another character) like a
+#     multi-word tab trigger (see above) whether it has spaces or not. A
+#     resulting match is passed to any python code blocks in the snippet
+#     definition as the local variable "match".
+#
+# t   Do not expand tabs - If a snippet definition includes leading tab
+#     characters, by default UltiSnips expands the tab characters honoring
+#     the Vim 'shiftwidth', 'softtabstop', 'expandtab' and 'tabstop'
+#     indentation settings. (For example, if 'expandtab' is set, the tab is
+#     replaced with spaces.) If this option is set, UltiSnips will ignore the
+#     Vim settings and insert the tab characters as is. This option is useful
+#     for snippets involved with tab delimited formats, for example.
+#
+# s   Remove whitespace immediately before the cursor at the end of a line
+#     before jumping to the next tabstop.  This is useful if there is a
+#     tabstop with optional text at the end of a line.
+#
+# m   Trim all whitespaces from right side of snippet lines. Useful when
+#     snippet contains empty lines which should remain empty after expanding.
+#     Without this option empty lines in snippets definition will have
+#     indentation too.
+#
+# e   Context snippets - With this option expansion of snippet can be
+#     controlled not only by previous characters in line, but by any given
+#     python expression. This option can be specified along with other
+#     options, like 'b'. See |UltiSnips-context-snippets| for more info.
+
+priority -50
+
+snippet nimp "NotImplementedException" b
+throw new System.NotImplementedException("Not implemented.");
+endsnippet
+
+snippet obsolete "Obsolete" b
+[System.Obsolete("Please use ${1} instead.")]
+endsnippet
+
+snippet vd "void" i
+void 
+endsnippet
+
+snippet ret "return" w
+return 
+endsnippet
+
+snippet retv "return value" w
+return ${1};
+endsnippet
+
+snippet ro "readonly" w
+readonly 
+endsnippet
+
+snippet pr "private readonly" b
+private readonly 
+endsnippet
+
+snippet pub "public" b
+public 
+endsnippet
+
+snippet pubv "public void" b
+public void 
+endsnippet
+
+snippet sys "System" i
+System.
+endsnippet
+
+snippet priv "private" i
+private 
+endsnippet
+
+snippet th "this" i
+this.
+endsnippet
+
+#########################
+#  classes and structs  #
+#########################
+snippet namespace "namespace" b
+namespace ${1:MyNamespace} {
+	${VISUAL}$0
+}
+endsnippet
+
+snippet class "class" w
+public class ${1:MyClass} {
+	$0
+}
+endsnippet
+
+snippet struct "struct" w
+struct ${1:MyStruct} {
+	$0
+}
+endsnippet
+
+snippet interface "interface" w
+public interface I${1:Interface} {
+	$0
+}
+endsnippet
+
+snippet enum "enumeration" b
+enum ${1:MyEnum} {
+	${2:Item}
+};
+endsnippet
+
+
+############
+#  Main()  #
+############
+snippet imain "static int main" b
+public static int Main(string[] args) {
+	$0
+}
+endsnippet
+
+snippet main "static void main" b
+public static void Main(string[] args) {
+	$0
+}
+endsnippet
+
+
+################
+#  properties  #
+################
+snippet prop "Simple property declaration" b
+public ${1:int} ${2:MyProperty} { get; set; }
+endsnippet
+
+snippet propfull "Full property declaration" b
+private ${1:int} ${2:_myProperty};
+
+public $1 ${3:MyProperty} {
+	get { return $2; }
+	set { $2 = value; }
+}
+endsnippet
+
+snippet propg "Property with a private setter" b
+public ${1:int} ${2:MyProperty} { get; private set; }
+endsnippet
+
+#############
+# Contracts #
+#############
+snippet req "Guard condition"
+Requires.IsNotNull(${1:var}, "$1");
+this.$1 = $1;
+endsnippet
+
+snippet reqn "Requires not null" b
+Requires.IsNotNull(${1:var}, "$1");
+endsnippet
+
+snippet reqnne "Requires not null or empty" b
+Requires.IsNotNullOrEmpty(${1:var}, "$1");
+endsnippet
+
+snippet reqt "Requires that" b
+Requires.That(${1:cond}, "$1");
+
+endsnippet
+
+snippet ensnn "Ensures not null" b
+Ensures.IsNotNull(${1:var}, "$1");
+endsnippet
+
+snippet ensnne "Ensures not null or empty" b
+Ensures.IsNotNullOrEmpty(${1:var}, "$1");
+endsnippet
+
+snippet enst "Ensures that" b
+Ensures.That(${1:cond}, "$1");
+endsnippet
+
+snippet ensnr "Ensures not reached" b
+Ensures.NotReached();
+endsnippet
+
+############
+#  blocks  #
+############
+snippet #if "#if #endif" b
+#if ${1:DEBUG}
+${VISUAL}$0
+#endif
+endsnippet
+
+snippet #region "#region #endregion" b
+#region ${1:Region}
+${VISUAL}$0
+#endregion
+endsnippet
+
+############
+#  events  #
+############
+snippet event
+public event System.EventHandler ${1:name};
+protected virtual void On$1(System.EventArgs e) {
+	var handler = $1;
+	if (handler != null) {
+		handler(this, e);
+	}
+}
+endsnippet
+
+snippet eventh "EventHandler" b
+event System.EventHandler ${1:name};
+endsnippet
+
+snippet evente "EventArgs.Empty" i
+System.EventArgs.Empty
+endsnippet
+
+
+###########
+# string  #
+###########
+# prefisso str
+snippet strf "Format" i
+string.Format(${1:string})
+endsnippet
+
+snippet strne "IsNullOrEmpty" i
+string.IsNullOrEmpty(${1:string})
+endsnippet
+
+snippet strnne "IsNotNullOrEmpty" i
+!string.IsNullOrEmpty(${1:string})
+endsnippet
+
+snippet ts "ToString" i
+ToString()
+endsnippet
+
+snippet stre "string.Empty" w
+string.Empty
+endsnippet
+
+
+###########
+# log4net #
+###########
+snippet log
+private static readonly log4net.ILog log =
+	log4net.LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
+endsnippet
+
+snippet logd
+if (log.IsDebugEnabled) log.Debug("${1:msg}");
+endsnippet
+
+snippet logdf 
+if (log.IsDebugEnabled) log.DebugFormat("${1:msg}");
+endsnippet
+
+snippet logi
+if (log.IsInfoEnabled) log.Info("${1:msg}");
+endsnippet
+
+snippet logif
+if (log.IsInfoEnabled) log.InfoFormat("${1:msg}");
+endsnippet
+
+snippet logw
+if (log.IsWarnEnabled) log.Warn("${1:msg}");
+endsnippet
+
+snippet logwf
+if (log.IsWarnEnabled) log.WarnFormat("${1:msg}");
+endsnippet
+
+snippet loge
+if (log.IsErrorEnabled) log.Error("${1:msg}");
+endsnippet
+
+snippet logef
+if (log.IsErrorEnabled) log.ErrorFormat("${1:msg}");
+endsnippet
+
+snippet logf
+if (log.IsFatalEnabled) log.Fatal("${1:msg}");
+endsnippet
+
+snippet logff
+if (log.IsFatalEnabled) log.FatalFormat("${1:msg}");
+endsnippet
+
+
+###########
+#  loops  #
+###########
+snippet for "for loop" b
+for (int ${1:i} = 0; $1 < ${2:10}; ++$1) {
+	${VISUAL}$0
+}
+endsnippet
+
+snippet forr "for loop (reverse)" b
+for (int ${1:i} = ${2:10}; $1 >= 0; --$1) {
+	${VISUAL}$0
+}
+endsnippet
+
+snippet foreach "foreach loop" b
+foreach (${3:var} ${2:item} in ${1:items}) {
+	${VISUAL}$0
+}
+endsnippet
+
+snippet while "while loop" b
+while (${1:true}) {
+	${VISUAL}$0
+}
+endsnippet
+
+snippet do "do loop" b
+do {
+	${VISUAL}$0
+} while (${1:true});
+endsnippet
+
+
+###############
+#  branching  #
+###############
+snippet if "if statement" b
+if ($1) {
+	${VISUAL}$0
+}
+endsnippet
+
+snippet ife "if else statement" b
+if ($1) {
+	${VISUAL}$2
+} else {
+	$3
+}
+endsnippet
+
+snippet elif "else if" w
+else if ($1) {
+	$0
+}
+endsnippet
+
+snippet if!n "if not null" b
+if ($1 != null) {
+	${VISUAL}$0
+}
+endsnippet
+
+snippet ifne "if null or empty" b
+if (string.IsNullOrEmpty(${1:string})) {
+	${VISUAL}$0
+}
+endsnippet
+
+snippet ifnne "if not null or empty" b
+if (!string.IsNullOrEmpty(${1:string})) {
+	${VISUAL}$0
+}
+endsnippet
+
+snippet switch "switch statement" b
+switch (${1:statement}) {
+	case ${2:value}:
+		break;
+
+	default:
+		$0break;
+}
+endsnippet
+
+snippet case "case" b
+case ${1:value}:
+	$2
+	break;
+endsnippet
+
+
+##############
+#  wrappers  #
+##############
+snippet using "using statement" b
+using (${1:resource}) {
+	${VISUAL}$0
+}
+endsnippet
+
+snippet unchecked "unchecked block" b
+unchecked {
+	${VISUAL}$0
+}
+endsnippet
+
+snippet checked "checked block" b
+checked {
+	${VISUAL}$0
+}
+endsnippet
+
+snippet unsafe "unsafe" b
+unsafe {
+	${VISUAL}$0
+}
+endsnippet
+
+
+########################
+#  exception handling  #
+########################
+snippet try "try catch block" b
+try {
+	${VISUAL}$0
+} catch (${1:System.Exception} ${2:ex}) {
+	throw;
+}
+endsnippet
+
+snippet tryf "try finally block" b
+try {
+	${VISUAL}$0
+} finally {
+}
+endsnippet
+
+snippet throw "throw"
+throw new ${1}Exception("${2}");
+endsnippet
+
+
+##########
+#  LINQ  #
+##########
+
+snippet from "LINQ syntax" b
+var ${1:seq} =
+	from ${2:item1} in ${3:items1}
+	join ${4:item2} in ${5:items2} on $2.${6:prop1} equals $4.${7:prop2}
+	select ${8:$2.prop3}
+	where ${9:clause}
+endsnippet
+
+
+############################
+#  feedback and debugging  #
+############################
+snippet wr "Console.WriteLine" b
+System.Console.WriteLine("$1");
+endsnippet
+
+# as you first type comma-separated parameters on the right, {n} values appear in the format string
+snippet wrf "Console.WriteLine with parameters" b
+System.Console.WriteLine("${2:`!p
+snip.rv = ' '.join(['{' + str(i) + '}' for i in range(t[1].count(','))])
+`}"${1:, something});
+endsnippet
+
+snippet mbox "Message box" b
+MessageBox.Show("${1:message}");
+endsnippet
+
+##############
+#   NUnit    #
+##############
+snippet ass "Assert that" b
+Assert.That(${1:actual}, Is.EqualTo(${2:expected}));
+endsnippet
+
+snippet uth "Assert that" b
+Assert.That(${1:actual}, Is.EqualTo(${2:expected}));
+endsnippet
+
+snippet ufix "Test fixture" b
+[TestFixture]
+endsnippet
+
+snippet utest "Test" b
+[Test]
+endsnippet
+
+snippet utestcase "Test case" b
+[TestCase(${1:args})]
+endsnippet
+
+snippet ucul "Set culture" b
+[SetCulture("it-IT")]
+endsnippet
+
+snippet uex "Explicit" b
+[Explicit]
+endsnippet
+
+snippet uign "Ignore" b
+[Ignore("${1:why}")]
+endsnippet
+
+snippet uthrow "Assert throw" b
+Assert.Throws<${1:exception}>(() => ${2:method});
+endsnippet
+
+snippet uempty "Is empty" b
+Assert.That(${1:string}, Is.Empty);
+endsnippet
+
+snippet unempty "Is not empty" b
+Assert.That(${1:string}, Is.Not.Empty);
+endsnippet
+
+snippet unull "Is null" b
+Assert.That(${1:obj}, Is.Null);
+endsnippet
+
+snippet unnull "Is not null" b
+Assert.That(${1:obj}, Is.Not.Null);
+endsnippet
+
+snippet ugt "Is greater than" b
+Assert.That(${1}, Is.GreaterThan(${2}));
+endsnippet
+
+snippet ugte "Is greater than or equal" b
+Assert.That(${1}, Is.GreaterThanOrEqualTo(${2}));
+endsnippet
+
+snippet ult "Is less than" b
+Assert.That(${1}, Is.LessThan(${2}));
+endsnippet
+
+snippet ulte "Is less than or equal" b
+Assert.That(${1}, Is.LessThanOrEqualTo(${2}));
+endsnippet
+
+snippet ut "Is true" b
+Assert.That(${1}, Is.True);
+endsnippet
+
+snippet uf "Is false" b
+Assert.That(${1}, Is.False);
+endsnippet
+
+#####################
+# Ploeh.Autofixture #
+####################
+snippet afix "new Fixture" b
+var fixture = new Fixture();
+endsnippet
+
+snippet ac "Create Fixture" b
+var ${1:var} = fixture.Create<${2:interface}>();
+endsnippet
+
+##############
+# nsubstitue #
+##############
+snippet ssub "Substitute.For" b
+var ${1:var} = Substitute.For<${2:interface}>();
+endsnippet
+
+snippet sevent "Raise.Event" b
+${1:event} += Raise.EventWith(null, System.EventArgs.Empty);
+endsnippet
+
+snippet sany "Arg.Any" i
+Arg.Any<${1:arg}>()
+endsnippet
+
+snippet sis "Arg.Is" i
+Arg.Is<${1:arg}>(v => ${2})
+endsnippet
+
+snippet sret "Returns" i
+Returns(${1});
+endsnippet
+
+snippet sreta "ReturnsForAnyArgs" i
+ReturnsForAnyArgs(${1});
+endsnippet
+
+snippet srec "Received" i
+Received()
+endsnippet
+
+snippet snrec "DidNotReceived" i
+DidNotReceive()
+endsnippet
+
+
+##################
+#  full methods  #
+##################
+snippet equals "Equals method" b
+public override bool Equals(object obj) {
+	if (obj == null || GetType() != obj.GetType()) {
+		return false;
+	}
+	$0
+	return base.Equals(obj);
+}
+endsnippet
+
+##########
+# Usings #
+##########
+snippet uscg "using Collections.Generic" b
+using SCG = System.Collections.Generic;
+endsnippet
+
+snippet usub "using NSubstitute" b
+using NSubstitute;
+endsnippet
+
+snippet ua "using Ploeh" b
+using Ploeh.AutoFixture;
+endsnippet
+
+snippet ulinq "using Linq" b
+using System.Linq;
+endsnippet
+
+snippet uunit "using NUnit Framework" b
+using NUnit.Framework;
+endsnippet
+
+############
+# Comments #
+############
+snippet fix "fix"
+// O-FIXME: ${VISUAL}$0
+endsnippet
