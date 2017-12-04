@@ -99,8 +99,8 @@ ocssnip is a collection of [UltiSnips](https://github.com/SirVer/ultisnips) snip
 
 
 ### Comments
-|         |             |
-| ---     | -----       |
+|        |                 |
+| ---    | -----           |
 | `fix`  | // FIX:         |
 | `todo` | // TODO:        |
 | `sdc`  | Short doc block |
@@ -134,7 +134,7 @@ ocssnip is a collection of [UltiSnips](https://github.com/SirVer/ultisnips) snip
 | `asnull`   | Is null                  |
 | `ast`      | Is true                  |
 | `asth`     | Assert throw             |
-| `asthat`   | Assert that              |
+| `aseq`   | Assert is equal              |
 | `exp`      | Explicit                 |
 | `ignore`   | Ignore                   |
 | `setcul`   | Set culture              |
