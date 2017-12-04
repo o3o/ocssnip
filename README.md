@@ -99,6 +99,8 @@ ocssnip is a collection of [UltiSnips](https://github.com/SirVer/ultisnips) snip
 
 
 ### Comments
+|         |             |
+| ---     | -----       |
 | `fix`  | // FIX:         |
 | `todo` | // TODO:        |
 | `sdc`  | Short doc block |
