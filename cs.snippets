@@ -202,6 +202,12 @@ void ${1:/*function name*/}(${2:/*args*/}) {
 }
 endsnippet
 
+snippet funp "public function definition (fun)" b
+public ${1:void} ${2:/*function name*/}(${3:/*args*/}) {
+	${VISUAL}${4:/*code*/}
+}
+endsnippet
+
 snippet get "Property with a private setter" b
 public ${1:int} ${2:MyProperty} { get; private set; }
 endsnippet
@@ -417,7 +423,7 @@ Assert.That(${1}, Is.True);
 endsnippet
 
 snippet asth "Assert throw" b
-Assert.Throws<${1:exception}>(() => ${2:method});
+Assert.That(() => ${1:method}, Throws.TypeOf<${2:exception}>());
 endsnippet
 
 snippet aseq "Assert that" b
@@ -568,4 +574,7 @@ snippet snn "shouldNotBeNull (snn)" w
 ShouldNotBeNull();
 endsnippet
 
+snippet sne "shouldNotBeNullOrEmpty (sne)" w
+ShouldNotBeNullOrEmpty();
+endsnippet
 

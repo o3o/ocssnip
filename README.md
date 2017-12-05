@@ -62,15 +62,16 @@ ocssnip is a collection of [UltiSnips](https://github.com/SirVer/ultisnips) snip
 | `struct` | struct    |
 
 ### Functions
-|           |                                     |
-| ---       | -----                               |
-| `fun`     | /*ret*/ /*function name*/(/*args*/) |
-| `func`    | void /*function name*/(/*args*/)    |
-| `get`     | *getter property*                   |
-| `getset`  | *getter setter property*            |
-| `getsetf` | *getter setter property full*       |
-| `main`    | void main(string[] args)            |
-| `maini`   | int main(string[] args)             |
+|           |                                            |
+| ---       | -----                                      |
+| `fun`     | /*ret*/ /*function name*/(/*args*/)        |
+| `func`    | void /*function name*/(/*args*/)           |
+| `funp`    | public /*ret*/ /*function name*/(/*args*/) |
+| `get`     | *getter property*                          |
+| `getset`  | *getter setter property*                   |
+| `getsetf` | *getter setter property full*              |
+| `main`    | void main(string[] args)                   |
+| `maini`   | int main(string[] args)                    |
 
 
 ### Using
@@ -134,7 +135,7 @@ ocssnip is a collection of [UltiSnips](https://github.com/SirVer/ultisnips) snip
 | `asnull`   | Is null                  |
 | `ast`      | Is true                  |
 | `asth`     | Assert throw             |
-| `aseq`   | Assert is equal              |
+| `aseq`     | Assert is equal          |
 | `exp`      | Explicit                 |
 | `ignore`   | Ignore                   |
 | `setcul`   | Set culture              |
@@ -181,11 +182,12 @@ ocssnip is a collection of [UltiSnips](https://github.com/SirVer/ultisnips) snip
 | `with`  | With(/*values*/)           |
 
 ### Should
-|        |                           |
-| ---    | -----                     |
-| `seq`  | shouldEqual               |
-| `sneq` | shouldNotEqual(/*to*/)    |
-| `st`   | shouldBeTrue              |
-| `sf`   | shouldBeFalse             |
-| `sn`   | shouldBeNull              |
-| `snn`  | shouldNotBeNull           |
+|        |                        |
+| ---    | -----                  |
+| `seq`  | ShouldEqual            |
+| `sneq` | ShouldNotEqual(/*to*/) |
+| `st`   | ShouldBeTrue           |
+| `sf`   | ShouldBeFalse          |
+| `sn`   | ShouldBeNull           |
+| `snn`  | ShouldNotBeNull        |
+| `sne`  | ShouldNotBeNullOrEmpty |
