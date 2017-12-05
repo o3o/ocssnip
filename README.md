@@ -48,7 +48,7 @@ ocssnip is a collection of [UltiSnips](https://github.com/SirVer/ultisnips) snip
 |           |                                                 |
 | ---       | -----                                           |
 | `do`      | do while                                        |
-| `for`     | for (size_t i = 0; i < count; ++i)              |
+| `for`     | for (/*type*/ i = 0; i < count; ++i)            |
 | `fore`    | foreach (/*elem*/; /*range*/)                   |
 | `fori`    | for (int i = 0; i < count; ++i)                 |
 | `wh`      | while (/*condition*/)                           |
@@ -77,7 +77,7 @@ ocssnip is a collection of [UltiSnips](https://github.com/SirVer/ultisnips) snip
 ### Using
 |            |                            |
 | ---        | -----                      |
-| `uscg`     | system.Collections.Generic |
+| `uscg`     | System.Collections.Generic |
 | `unsub`    | NSubstitute                |
 | `uautofix` | Ploeh.AutoFixture          |
 | `ulinq`    | Linq                       |
@@ -96,7 +96,7 @@ ocssnip is a collection of [UltiSnips](https://github.com/SirVer/ultisnips) snip
 | `try`   | try , catch             |
 | `tryf`  | try , catch and finally |
 | `catch` | catch (Exception e)     |
-| `thr`   | throw new Exception("") |
+| `thr`   | throw new Exception()   |
 
 
 ### Comments
@@ -104,7 +104,7 @@ ocssnip is a collection of [UltiSnips](https://github.com/SirVer/ultisnips) snip
 | ---    | -----           |
 | `fix`  | // FIX:         |
 | `todo` | // TODO:        |
-| `sdc`  | Short doc block |
+| `sdoc` | Short doc block |
 
 ### log4net
 |         |             |
@@ -147,7 +147,7 @@ ocssnip is a collection of [UltiSnips](https://github.com/SirVer/ultisnips) snip
 ### Ploeh.Autofixture
 |              |                |
 | ---          | -----          |
-| `autonew     | new Fixture    |
+| `autonew`    | new Fixture    |
 | `autocreate` | Create Fixture |
 
 ### Nsubstitue
@@ -162,8 +162,14 @@ ocssnip is a collection of [UltiSnips](https://github.com/SirVer/ultisnips) snip
 | `srec`   | Received          |
 | `snrec`  | DidNotReceived    |
 
+### Extensions (from Unstandard)
 
-### Contracts
+#### General
+|         |                            |
+| ---     | -----                      |
+| `with`  | With(/*values*/)           |
+
+#### Contracts
 |         |                            |
 | ---     | -----                      |
 | `req`   | Guard condition            |
@@ -176,12 +182,7 @@ ocssnip is a collection of [UltiSnips](https://github.com/SirVer/ultisnips) snip
 | `ensnr` | Ensures not reached        |
 
 
-### Extension (unstandard)
-|         |                            |
-| ---     | -----                      |
-| `with`  | With(/*values*/)           |
-
-### Should
+#### Should
 |        |                        |
 | ---    | -----                  |
 | `seq`  | ShouldEqual            |
