@@ -288,7 +288,7 @@ endsnippet
 snippet try "try/catch (try)" b
 try {
 	${VISUAL}${1:/*code to try*/}
-} catch (${2}Exception ex) {
+} catch (${2:System}.Exception ex) {
 	${3:/*handle exception*/}
 }
 endsnippet
