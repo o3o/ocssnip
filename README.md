@@ -136,6 +136,7 @@ ocssnip is a collection of [UltiSnips](https://github.com/SirVer/ultisnips) snip
 | `ast`      | Is true                  |
 | `asth`     | Assert throw             |
 | `aseq`     | Assert is equal          |
+| `asneq`    | Assert is not equal      |
 | `exp`      | Explicit                 |
 | `ignore`   | Ignore                   |
 | `setcul`   | Set culture              |

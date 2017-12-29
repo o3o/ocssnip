@@ -426,9 +426,14 @@ snippet asth "Assert throw" b
 Assert.That(() => ${1:method}, Throws.TypeOf<${2:exception}>());
 endsnippet
 
-snippet aseq "Assert that" b
+snippet aseq "Assert EqualTo" b
 Assert.That(${1:actual}, Is.EqualTo(${2:expected}));
 endsnippet
+
+snippet asneq "Assert Not EqualTo" b
+Assert.That(${1:actual}, Is.Not.EqualTo(${2:expected}));
+endsnippet
+
 
 snippet exp "Explicit" b
 [Explicit]
