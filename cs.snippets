@@ -54,12 +54,31 @@ snippet sys "System" i
 System.
 endsnippet
 
+snippet sysd "System.Diagnostics" i
+using static System.Diagnostics.Debug;
+endsnippet
+
+# ------------------
+# Asserts
+# ------------------
+snippet as "assert (as)" b
+Assert(${1:false});
+endsnippet
+
+snippet asm "assert with message (asm)" b
+Assert(${1:/*condition*/}, "${2:error message}");
+endsnippet
+
+snippet asn "assert not null (asn)" b
+Assert(${1:} != null);
+endsnippet
+
 
 # ------------------
 # String
 # ------------------
 
-snippet strne "IsNullOrEmpty" i
+snippet snoe "IsNullOrEmpty" i
 string.IsNullOrEmpty(${1:string})
 endsnippet
 
@@ -76,7 +95,7 @@ ToString()
 endsnippet
 
 # ------------------
-#  branching  
+#  branching
 # ------------------
 snippet case "case" b
 case ${1:value}:
@@ -128,7 +147,7 @@ switch (${1:statement}) {
 endsnippet
 
 # ------------------
-#  loops  
+#  loops
 # ------------------
 snippet do "do loop" b
 do {
@@ -190,13 +209,13 @@ endsnippet
 # ------------------
 # Funtion
 # ------------------
-snippet fun "function definition (fun)" b
+snippet fun "function definition (fun)" i
 ${1:void} ${2:/*function name*/}(${3:/*args*/}) {
 	${VISUAL}${4:/*code*/}
 }
 endsnippet
 
-snippet func "void function definition (void)" b
+snippet func "void function definition (void)" i
 void ${1:/*function name*/}(${2:/*args*/}) {
 	${VISUAL}${3:/*code*/}
 }
@@ -238,7 +257,7 @@ public static int Main(string[] args) {
 endsnippet
 
 # ------------------
-# Usings 
+# Usings
 # ------------------
 snippet uscg "using Collections.Generic" b
 using SCG = System.Collections.Generic;
@@ -280,6 +299,10 @@ protected virtual void On$1(System.EventArgs e) {
 		handler(this, e);
 	}
 }
+endsnippet
+
+snippet eventd "(o, e) =>" i
++= (o, e) => $1
 endsnippet
 
 # ------------------
@@ -331,7 +354,7 @@ snippet sdoc "short doc block (sdoc)" b
 endsnippet
 
 # ------------------
-# log4net 
+# log4net
 # ------------------
 snippet log
 private static readonly log4net.ILog log =
@@ -342,7 +365,7 @@ snippet logd
 if (log.IsDebugEnabled) log.Debug("${1:msg}");
 endsnippet
 
-snippet logdf 
+snippet logdf
 if (log.IsDebugEnabled) log.DebugFormat("${1:msg}");
 endsnippet
 
@@ -462,7 +485,7 @@ snippet testfix "Test fixture" b
 endsnippet
 
 # ------------------
-# Ploeh.Autofixture 
+# Ploeh.Autofixture
 # ------------------
 snippet autonew "new Fixture" b
 var fixture = new Fixture();

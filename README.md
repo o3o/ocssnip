@@ -89,6 +89,7 @@ ocssnip is a collection of [UltiSnips](https://github.com/SirVer/ultisnips) snip
 | `event`   | Full declaraton |
 | `evente`  | EventArgs.Empty |
 | `eventon` | *On* Function   |
+| `eventd`  | *+= (o, e) =>*  |
 
 ### Exception handling
 |         |                         |
