@@ -361,43 +361,43 @@ private static readonly log4net.ILog log =
 	log4net.LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
 endsnippet
 
-snippet logd
+snippet ld
 if (log.IsDebugEnabled) log.Debug("${1:msg}");
 endsnippet
 
-snippet logdf
+snippet ldf
 if (log.IsDebugEnabled) log.DebugFormat("${1:msg}");
 endsnippet
 
-snippet logi
+snippet li
 if (log.IsInfoEnabled) log.Info("${1:msg}");
 endsnippet
 
-snippet logif
+snippet lif
 if (log.IsInfoEnabled) log.InfoFormat("${1:msg}");
 endsnippet
 
-snippet logw
+snippet lw
 if (log.IsWarnEnabled) log.Warn("${1:msg}");
 endsnippet
 
-snippet logwf
+snippet lwf
 if (log.IsWarnEnabled) log.WarnFormat("${1:msg}");
 endsnippet
 
-snippet loge
+snippet le
 if (log.IsErrorEnabled) log.Error("${1:msg}");
 endsnippet
 
-snippet logef
+snippet lef
 if (log.IsErrorEnabled) log.ErrorFormat("${1:msg}");
 endsnippet
 
-snippet logf
+snippet lf
 if (log.IsFatalEnabled) log.Fatal("${1:msg}");
 endsnippet
 
-snippet logff
+snippet lff
 if (log.IsFatalEnabled) log.FatalFormat("${1:msg}");
 endsnippet
 
