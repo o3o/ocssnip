@@ -353,6 +353,32 @@ snippet sdoc "short doc block (sdoc)" b
  */
 endsnippet
 
+snippet fsdoc "short function ddoc block (fsdoc)" b
+/**
+ * ${1:description}
+ *
+ * ${2:Parameters:
+ *  ${3:param} - ${4:param description} ${5}}
+ */
+endsnippet
+
+snippet pars "Params (pars)"
+Parameters:
+*  ${1:param} - ${2:param description}
+*  ${3}
+endsnippet
+
+snippet par "Params (par)"
+${1:param} - ${2:param description}
+endsnippet
+
+snippet rets "Returns (rets)"
+Returns:  ${1:return value/s}
+endsnippet
+
+
+
+
 snippet doff "indent off" b
 // *INDENT-OFF*
 endsnippet
@@ -623,13 +649,3 @@ snippet copy "Copyright Microline" b
  *	Authors: Orfeo Da Vià
  */
 endsnippet
-
-snippet fsdoc "short function ddoc block (fsdoc)" b
-/**
- * ${1:description}
- *
- * ${2:Params:
- *  ${3:param} = ${4:param description} ${5}}
- */
-endsnippet
-
