@@ -353,6 +353,9 @@ snippet sdoc "short doc block (sdoc)" b
  */
 endsnippet
 
+# ------------------
+# NaturalDocs
+# ------------------
 snippet fsdoc "short function ddoc block (fsdoc)" b
 /**
  * ${1:description}
@@ -517,6 +520,37 @@ endsnippet
 
 snippet testfix "Test fixture" b
 [TestFixture]
+endsnippet
+
+# ------------------
+# NUnit Classic
+# ------------------
+snippet ne "Assert.IsEmpty" b
+Assert.IsEmpty($1);
+endsnippet
+
+snippet nt "Assert.True" b
+Assert.True($1);
+endsnippet
+
+snippet nf "Assert.False" b
+Assert.False($1);
+endsnippet
+
+snippet nn "Assert.Null" b
+Assert.Null($1);
+endsnippet
+
+snippet nnn "Assert.NotNull" b
+Assert.NotNull($1);
+endsnippet
+
+snippet nae "Assert.AreEqual" b
+Assert.AreEqual($1);
+endsnippet
+
+snippet nane "Assert.AreNotEqual" b
+Assert.AreNotEqual($1);
 endsnippet
 
 # ------------------
