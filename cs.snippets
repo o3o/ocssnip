@@ -77,7 +77,6 @@ endsnippet
 # ------------------
 # String
 # ------------------
-
 snippet snoe "IsNullOrEmpty" i
 string.IsNullOrEmpty(${1:string})
 endsnippet
@@ -95,7 +94,7 @@ ToString()
 endsnippet
 
 # ------------------
-#  branching
+# Branching
 # ------------------
 snippet case "case" b
 case ${1:value}:
@@ -147,7 +146,7 @@ switch (${1:statement}) {
 endsnippet
 
 # ------------------
-#  loops
+# Loops
 # ------------------
 snippet do "do loop" b
 do {
@@ -354,6 +353,21 @@ snippet sdoc "short doc block (sdoc)" b
 endsnippet
 
 # ------------------
+# Doxygen
+# ------------------
+snippet par "Param (par)"
+@param ${1} ${2}
+endsnippet
+
+snippet rets "Returns (rets)"
+@return  ${1}
+endsnippet
+
+snippet idoc "Inline doc (idoc)"
+/**< ${1} */
+endsnippet
+
+# ------------------
 # NaturalDocs
 # ------------------
 snippet fsdoc "short function ddoc block (fsdoc)" b
@@ -371,7 +385,7 @@ Parameters:
 *  ${3}
 endsnippet
 
-snippet par "Params (par)"
+snippet npar "Params (par)"
 ${1:param} - ${2:param description}
 endsnippet
 
