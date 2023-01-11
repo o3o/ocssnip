@@ -14,10 +14,6 @@ snippet obsolete "Obsolete" b
 [System.Obsolete("Please use ${1} instead.")]
 endsnippet
 
-snippet pr "private readonly" b
-private readonly 
-endsnippet
-
 snippet priv "private" i
 private 
 endsnippet
@@ -54,9 +50,6 @@ snippet sys "System" i
 System.
 endsnippet
 
-snippet sysd "System.Diagnostics" i
-using static System.Diagnostics.Debug;
-endsnippet
 
 # ------------------
 # Asserts
@@ -71,6 +64,11 @@ endsnippet
 
 snippet asn "assert not null (asn)" b
 Assert(${1:} != null);
+endsnippet
+
+snippet areq "Guard condition"
+Assert(${1:} != null);
+this.$1 = $1;
 endsnippet
 
 
@@ -220,12 +218,6 @@ void ${1:/*function name*/}(${2:/*args*/}) {
 }
 endsnippet
 
-snippet funp "public function definition (fun)" b
-public ${1:void} ${2:/*function name*/}(${3:/*args*/}) {
-	${VISUAL}${4:/*code*/}
-}
-endsnippet
-
 snippet get "Property with a private setter" b
 public ${1:int} ${2:MyProperty} { get; private set; }
 endsnippet
@@ -278,6 +270,14 @@ snippet ununit "using NUnit Framework" b
 using NUnit.Framework;
 endsnippet
 
+
+snippet udiag "System.Diagnostics" i
+using static System.Diagnostics.Debug;
+endsnippet
+
+snippet uas "Microline.Assertion" i
+using static Microline.Assertion;
+endsnippet
 
 # ------------------
 #  Events
@@ -367,35 +367,6 @@ snippet idoc "Inline doc (idoc)"
 /**< ${1} */
 endsnippet
 
-# ------------------
-# NaturalDocs
-# ------------------
-snippet fsdoc "short function ddoc block (fsdoc)" b
-/**
- * ${1:description}
- *
- * ${2:Parameters:
- *  ${3:param} - ${4:param description} ${5}}
- */
-endsnippet
-
-snippet pars "Params (pars)"
-Parameters:
-*  ${1:param} - ${2:param description}
-*  ${3}
-endsnippet
-
-snippet npar "Params (par)"
-${1:param} - ${2:param description}
-endsnippet
-
-snippet rets "Returns (rets)"
-Returns:  ${1:return value/s}
-endsnippet
-
-
-
-
 snippet doff "indent off" b
 // *INDENT-OFF*
 endsnippet
@@ -409,8 +380,7 @@ endsnippet
 # log4net
 # ------------------
 snippet log
-private static readonly log4net.ILog log =
-	log4net.LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
+private static readonly log4net.ILog log = log4net.LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
 endsnippet
 
 snippet ld
@@ -614,14 +584,6 @@ DidNotReceive().$1
 endsnippet
 
 # ------------------
-# Extensions
-# ------------------
-snippet with "With" w
-"${1:/*format string*/}".With(${0:/*values*/})
-endsnippet
-
-
-# ------------------
 # Contracts
 # ------------------
 snippet req "Guard condition"
@@ -639,7 +601,6 @@ endsnippet
 
 snippet reqt "Requires that" b
 Requires.That(${1:cond}, "$1");
-
 endsnippet
 
 snippet ensn "Ensures not null" b
