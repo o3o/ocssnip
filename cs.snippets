@@ -87,7 +87,7 @@ snippet stre "string.Empty" w
 string.Empty
 endsnippet
 
-snippet ts "ToString" i
+snippet tos "ToString" i
 ToString()
 endsnippet
 
@@ -530,11 +530,11 @@ Assert.NotNull($1);
 endsnippet
 
 snippet nae "Assert.AreEqual" b
-Assert.AreEqual($1);
+Assert.AreEqual(${1:exp}, ${2:actual});
 endsnippet
 
 snippet nane "Assert.AreNotEqual" b
-Assert.AreNotEqual($1);
+Assert.AreNotEqual(${1:exp}, ${2:actual});
 endsnippet
 
 # ------------------
